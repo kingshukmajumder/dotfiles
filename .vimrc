@@ -29,6 +29,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'lervag/vimtex'
 Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'wincent/terminus'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'godlygeek/tabular'
 "Plugin 'jacoborus/tender.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,10 +70,39 @@ syntax enable
 colorscheme gruvbox
 "colorscheme monokai
 set background=dark
-execute pathogen#infect()
 filetype plugin indent on
 inoremap jj <ESC>
 "inoremap JJ <ESC>
 nnoremap <space> i<space><esc>l
 nnoremap <tab> i<tab><esc>l
 nnoremap <backspace> i<backspace><esc>l
+let g:goyo_width=100
+let g:goyo_height=300
+"let g:goyo_linenr=1
+nmap <c-g> :Goyo<CR>
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
+
+let s:middot='·'
+let s:raquo='»'
+let s:small_l='ℓ'
+" Override default `foldtext()`, which produces something like:
+"
+"   +---  2 lines: source $HOME/.vim/pack/bundle/opt/vim-pathogen/autoload/pathogen.vim--------------------------------
+"
+" Instead returning:
+"
+"   »··[2ℓ]··: source $HOME/.vim/pack/bundle/opt/vim-pathogen/autoload/pathogen.vim···································
+"
+function! MyFoldtext() abort
+  let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
+  let l:first=substitute(getline(v:foldstart), '\v *', '', '')
+  let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
+  return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
+endfunction
+
+set fillchars=vert:┃              " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
+"set foldlevelstart=99               " start unfolded
+set foldtext=MyFoldtext()
+set foldmethod=marker
