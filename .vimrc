@@ -30,9 +30,10 @@ Plugin 'morhetz/gruvbox'
 Plugin 'lervag/vimtex'
 Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'wincent/terminus'
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
 Plugin 'godlygeek/tabular'
+" Syntaxes for a lot of languages
+Plugin 'sheerun/vim-polyglot'
+
 "Plugin 'jacoborus/tender.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,10 +77,6 @@ inoremap jj <ESC>
 nnoremap <space> i<space><esc>l
 nnoremap <tab> i<tab><esc>l
 nnoremap <backspace> i<backspace><esc>l
-let g:goyo_width=100
-let g:goyo_height=300
-"let g:goyo_linenr=1
-nmap <c-g> :Goyo<CR>
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
@@ -106,3 +103,12 @@ set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
 "set foldlevelstart=99               " start unfolded
 set foldtext=MyFoldtext()
 set foldmethod=marker
+"tab commands
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+ca te tabedit
+nnoremap te  :tabedit<Space>
