@@ -26,14 +26,19 @@ Plugin 'VundleVim/Vundle.vim'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'morhetz/gruvbox'
 Plugin 'lervag/vimtex'
+"Plugin 'morhetz/gruvbox'
 Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'wincent/terminus'
 Plugin 'godlygeek/tabular'
 " Syntaxes for a lot of languages
 Plugin 'sheerun/vim-polyglot'
-
+Plugin 'RRethy/vim-illuminate'
+Plugin 'dracula/vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/vim-slash'
 "Plugin 'jacoborus/tender.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,8 +73,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
 syntax enable
-colorscheme gruvbox
+"colorscheme gruvbox
 "colorscheme monokai
+color dracula
 set background=dark
 filetype plugin indent on
 inoremap jj <ESC>
@@ -112,3 +118,9 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 ca te tabedit
 nnoremap te  :tabedit<Space>
+set nomodeline " ACE vulnerability. Bug Description + Fix at https://www.exploit-db.com/exploits/46973
+set laststatus=2
+set noshowmode
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-f> :NERDTreeToggle<CR>
+map <C-a> :Tab /
