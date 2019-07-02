@@ -115,7 +115,17 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH="$HOME/anaconda2/bin/:$PATH"
 alias vi=vim
 alias cmake=cmake3
 alias tmux="TERM=screen-256color-bce tmux"
+
+# User specific aliases and functions
+
+
+# added by Anaconda2 installer
+export PATH="$HOME/anaconda2/bin/:$PATH"
+#alias vivado='vivado -tempDir ~/.vivado_env/ -log ~/.vivado_env/vivado.log -journal ~/.vivado_env/vivado.jou&'
+source /tools/Xilinx/DocNav/.settings64-DocNav.sh
+source /tools/Xilinx/Vivado/2018.3/.settings64-Vivado.sh
+source /tools/Xilinx/SDK/2018.3/.settings64-SDK_Core_Tools.sh
+export LD_LIBRARY_PATH=/tools/Xilinx/Vivado/2018.3/lib/lnx64.o/
