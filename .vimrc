@@ -39,6 +39,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/vim-slash'
+Plugin 'ajh17/VimCompletesMe'
 "Plugin 'jacoborus/tender.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
