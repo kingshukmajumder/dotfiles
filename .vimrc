@@ -15,14 +15,25 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/vim-slash'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"fuzzy file search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'yegappan/mru'
+Plug 'mhinz/vim-startify'
+Plug 'Raimondi/delimitMate'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
 "Vim color scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+"Distraction free writing.
+Plug 'junegunn/goyo.vim'
 call plug#end() 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "Misc settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 syntax on
+"set autochdir
 set tabstop=2
 set expandtab
 set hlsearch
@@ -35,10 +46,7 @@ set relativenumber
 if (has("termguicolors"))
   set termguicolors
 endif
-"set 80 column limit and highlight overflowing text.
 set textwidth=80
-set colorcolumn=+1
-
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -100,11 +108,17 @@ set fillchars=vert:┃              " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8
 set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
 "set foldlevelstart=99               " start unfolded
 set foldtext=MyFoldtext()
-set foldmethod=marker
+set foldmethod=indent
 set nomodeline " ACE vulnerability. Bug Description + Fix at https://www.exploit-db.com/exploits/46973
 set laststatus=2
 set noshowmode
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"fzf settings
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nnoremap <C-p> :GFiles<Cr>
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "coc specific options
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
