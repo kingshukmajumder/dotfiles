@@ -116,18 +116,24 @@ if ! shopt -oq posix; then
   fi
 fi
 alias vi=vim
-alias cmake=cmake3
 alias tmux="TERM=screen-256color-bce tmux"
 
 # User specific aliases and functions
 
 
 # added by Anaconda2 installer
-export PATH="$HOME/anaconda2/bin/:$PATH"
+#export PATH="$HOME/anaconda2/bin/:$PATH"
+
+#vivado settings
+
 #alias vivado='vivado -tempDir ~/.vivado_env/ -log ~/.vivado_env/vivado.log -journal ~/.vivado_env/vivado.jou&'
 source /tools/Xilinx/DocNav/.settings64-DocNav.sh
-source /tools/Xilinx/Vivado/2019.1/.settings64-Vivado.sh
-source /tools/Xilinx/SDK/2019.1/.settings64-SDK_Core_Tools.sh
-export LD_LIBRARY_PATH=/tools/Xilinx/Vivado/2018.3/lib/lnx64.o/
+source /tools/Xilinx/Vivado/2021.1/.settings64-Vivado.sh
+source /tools/Xilinx/Vitis/2021.1/.settings64-Vitis.sh
+source /tools/Xilinx/Vitis_HLS/2021.1/.settings64-Vitis_HLS.sh
+#export LD_LIBRARY_PATH=/tools/Xilinx/Vivado/2021.1/lib/lnx64.o/
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
+#export LLVM_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer
+alias git-log="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
